@@ -847,8 +847,14 @@ img {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3rem;
+}
+
+.contact-info,
+.contact-map,
+.contact-item > div:last-child {
+    min-width: 0;
 }
 
 .contact-info h2 {
@@ -897,6 +903,7 @@ img {
 
 .contact-item a {
     color: var(--text-light);
+    overflow-wrap: anywhere;
 }
 
 .contact-item a:hover {
@@ -912,6 +919,13 @@ img {
 .map-container {
     border: 1px solid rgba(var(--gold-rgb), 0.35);
     overflow: hidden;
+    aspect-ratio: 4 / 3;
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .map-note {
@@ -1092,6 +1106,11 @@ img {
 
     .contact-grid {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .contact-item:hover {
+        transform: none;
     }
 
     .gallery-item.wide {
@@ -1121,6 +1140,56 @@ img {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding-inline: 16px;
+    }
+
+    .contact-page .page-header {
+        padding: 6.5rem 0 2.75rem;
+    }
+
+    .contact-page .page-title {
+        font-size: clamp(2.6rem, 15vw, 3.5rem);
+        line-height: 1;
+    }
+
+    .contact-page .page-subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .contact-section {
+        padding: 3rem 0;
+    }
+
+    .contact-info h2,
+    .contact-map h2 {
+        font-size: 2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .contact-item {
+        gap: 1rem;
+        padding: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-icon img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .contact-item .btn {
+        width: 100%;
+        justify-content: center;
+        padding-inline: 1rem;
+        margin-top: 0.25rem;
+    }
+
+    .map-container {
+        aspect-ratio: 1 / 1;
+    }
+
     .features-grid,
     .trainers-grid,
     .gallery-grid,
